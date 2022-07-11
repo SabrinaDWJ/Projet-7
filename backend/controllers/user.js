@@ -51,7 +51,7 @@ exports.login = async (req, res) => {
 // Récupération des informations d'un seul utilisateur
 exports.userInfo = async (req, res) => {
     try {
-        let user = await User.findOne({ _id: req.params.id });
+        let user = await User.find({ _id: mongoose.Types.ObjectId(XXX) }).select("firstName lastName imageUrl");
         if (!user) {
             return res.status(404).json({ message: 'User non trouvée !' });
         }
